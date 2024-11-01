@@ -1,9 +1,9 @@
-openapi: 3.1.0
+openapi: 3.1.1
 info:
   title: Chronicle API
   version: v1alpha
 servers:
-  - url: 'https://{region}-chronicle.googleapis.com/{version}'
+  - url: 'https://{region}-chronicle.googleapis.com/v1alpha'
     variables:
       region:
         enum:
@@ -22,49 +22,65 @@ servers:
         - me-central1
         - europe-west12
         default: us
-      version:
-        enum:
-        - v1alpha
-        default: v1alpha
 paths:
   /projects/{project}/locations/{location}/instances/{instance}:
     get:
-      description: Get a SecOps instance
       operationId: getInstance
+      summary: Get a SecOps instance
+      externalDocs:
+        url: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances/get
       tags:
         - chronicle
       responses:
         200:
           description: A SecOps instance name
-    $ref: '#/components/pathItems/InstancePath'
+    parameters:
+      - $ref: '#/components/parameters/Project'
+      - $ref: '#/components/parameters/Location'
+      - $ref: '#/components/parameters/Instance'
   /projects/{project}/locations/{location}/instances/{instance}/logTypes:
     get:
-      description: List log types
       operationId: getLogType
+      summary: List log types
+      externalDocs:
+        url: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances.logTypes/list
       tags:
         - chronicle
       responses:
         200:
-          description: A SecOps log type
+          description: List of SecOps log types
     parameters:
+      - $ref: '#/components/parameters/Project'
+      - $ref: '#/components/parameters/Location'
+      - $ref: '#/components/parameters/Instance'
       - name: pageSize
         in: query
         schema:
+          type: int
+      - name: pageToken
+        in: query
+        schema:
           type: string
-    $ref: '#/components/pathItems/InstancePath'
 components:
-  pathItems:
-    InstancePath:
-      parameters:
-        - name: project
-          in: path
-          schema:
-            type: string
-        - name: location
-          in: path
-          schema:
-            type: string
-        - name: instance
-          in: path
-          schema:
-            type: string
+  parameters:
+    Project:
+      name: project
+      in: path
+      description: The GCP project
+      required: true
+      schema:
+        type: string
+    Location:
+      name: location
+      in: path
+      description: The SecOps region
+      required: true
+      schema:
+        type: string
+    Instance:
+      name: instance
+      in: path
+      description: The SecOps customer ID
+      required: true
+      schema:
+        type: string
