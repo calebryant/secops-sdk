@@ -30,50 +30,43 @@ paths:
   /projects/{project}/locations/{location}/instances/{instance}:
     get:
       description: Get a SecOps instance
+      operationId: getInstance
       tags:
-        - chrnoicle
+        - chronicle
+        - getMethod
       responses:
         200:
           description: A SecOps instance name
-    parameters:
-    - name: project
-      in: path
-      schema:
-        type: string
-    - name: location
-      in: path
-      schema:
-        type: string
-    - name: instance
-      in: path
-      schema:
-        type: string
-    - name: pageSize
-      in: query
-      schema:
-        type: string
+    $ref: '#/components/pathItems/InstancePath'
   /projects/{project}/locations/{location}/instances/{instance}/logTypes:
     get:
       description: List log types
+      operationId: getLogType
       tags:
-        - chrnoicle
+        - chronicle
+        - listMethod
       responses:
         200:
           description: A SecOps log type
     parameters:
-      - name: project
-        in: path
-        schema:
-          type: string
-      - name: location
-        in: path
-        schema:
-          type: string
-      - name: instance
-        in: path
-        schema:
-          type: string
       - name: pageSize
         in: query
         schema:
           type: string
+    $ref: '#/components/pathItems/InstancePath'
+components:
+  pathItems:
+    InstancePath:
+      parameters:
+        - name: project
+          in: path
+          schema:
+            type: string
+        - name: location
+          in: path
+          schema:
+            type: string
+        - name: instance
+          in: path
+          schema:
+            type: string
