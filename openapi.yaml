@@ -33,7 +33,6 @@ paths:
       operationId: getInstance
       tags:
         - chronicle
-        - getMethod
       responses:
         200:
           description: A SecOps instance name
@@ -44,7 +43,6 @@ paths:
       operationId: getLogType
       tags:
         - chronicle
-        - listMethod
       responses:
         200:
           description: A SecOps log type
