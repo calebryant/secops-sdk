@@ -1,0 +1,21 @@
+GetInstancePath:
+  get:
+    operationId: GetInstance
+    summary: Get a SecOps instance
+    externalDocs:
+      url: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances/get
+    tags:
+      - instances
+    responses:
+      200:
+        $ref: '#/Instance'
+  parameters:
+    - $ref: 'pathParameters.yaml#/ProjectPathParam'
+    - $ref: 'pathParameters.yaml#LocationPathParam'
+    - $ref: 'pathParameters.yaml#/InstancePathParam'
+Instance:
+  description: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances#Instance
+  content:
+    name:
+      schema:
+        type: string

@@ -1,0 +1,18 @@
+ListLogsPath:
+  get:
+    operationId: ListLogs
+    summary: List logs in a SecOps tenant
+    externalDocs:
+      url: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances.logTypes.logs/list
+    tags:
+      - logs
+    responses:
+      200:
+        description: A SecOps instance name
+  parameters:
+    - $ref: 'pathParameters.yaml#/ProjectPathParam'
+    - $ref: 'pathParameters.yaml#LocationPathParam'
+    - $ref: 'pathParameters.yaml#/InstancePathParam'
+    - $ref: 'pathParameters.yaml#/PageSizeQueryParam'
+    - $ref: 'pathParameters.yaml#/PageTokenQueryParam'
+    - $ref: 'pathParameters.yaml#/FilterQueryParam'

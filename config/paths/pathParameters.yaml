@@ -1,0 +1,36 @@
+ProjectPathParam:
+  name: project
+  in: path
+  description: The GCP project
+  required: true
+  schema:
+    type: string
+LocationPathParam:
+  name: location
+  in: path
+  description: The SecOps region
+  required: true
+  schema:
+    type: string
+InstancePathParam:
+  name: instance
+  in: path
+  description: The SecOps customer ID
+  required: true
+  schema:
+    type: string
+PageSizeQueryParam:
+  name: pageSize
+  in: query
+  schema:
+    type: int
+PageTokenQueryParam:
+  name: pageToken
+  in: query
+  schema:
+    type: string
+FilterQueryParam:
+  name: filter
+  in: query
+  schema:
+    type: string

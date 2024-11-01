@@ -1,0 +1,17 @@
+ListLogTypesPath:
+  get:
+    operationId: ListLogTypes
+    summary: List log types
+    externalDocs:
+      url: https://cloud.google.com/chronicle/docs/reference/rest/v1alpha/projects.locations.instances.logTypes/list
+    tags:
+      - logtypes
+    responses:
+      200:
+        description: List of SecOps log types
+  parameters:
+    - $ref: 'pathParameters.yaml#/ProjectPathParam'
+    - $ref: 'pathParameters.yaml#LocationPathParam'
+    - $ref: 'pathParameters.yaml#/InstancePathParam'
+    - $ref: 'pathParameters.yaml#/PageSizeQueryParam'
+    - $ref: 'pathParameters.yaml#/PageTokenQueryParam'
